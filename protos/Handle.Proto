@@ -1,0 +1,126 @@
+PROTO Handle [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 1 0 0
+  field SFFloat    bodyMass     1
+
+  ]
+  {
+    Solid {
+  translation IS translation
+  rotation IS rotation
+  children [
+    USE BALL_SHAPE
+  ]
+  name "solid(1)"
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+    mass 20
+  }
+  linearVelocity 5.89736661269269e-07 -1.1084671291428095e-08 8.787961444784554e-07
+  angularVelocity 2.5812082585786188e-05 1.746289117334785e-05 4.82037563687023e-06
+}
+Solid {
+  translation 0 0.05 -0.5
+  children [
+    DEF WALL_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0.498039
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 1 0.1 0.05
+      }
+    }
+  ]
+  name "wall"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0.0172919 0.05 0.523879
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(2)"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0.524878 0.05 -0.00336018
+  rotation 0 1 0 1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(3)"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation -0.52 0.05 -0.00336018
+  rotation 0 1 0 1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(4)"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0.09224743344752766 0.029215199999999997 0.030119623945611337
+  rotation 0.7543182651632477 -0.464226784175289 -0.4642170265030975 1.84908215855564
+  children [
+    DEF G0 Group {
+      children [
+        Transform {
+          translation 0 -0.05 0
+          children [
+            Shape {
+              appearance DEF dumbell PBRAppearance {
+                baseColor 0.666667 0.666667 0.498039
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 0.05 0
+          children [
+            Shape {
+              appearance USE dumbell
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Shape {
+          appearance USE dumbell
+          geometry Cylinder {
+            height 0.1
+            radius 0.01
+          }
+        }
+      ]
+    }
+  ]
+  name "Handle"
+  contactMaterial "dumbell"
+  boundingObject USE G0
+  physics Physics {
+    density -1
+    mass IS bodyMass
+    centerOfMass [
+      0 0 0
+    ]
+    damping Damping {
+      linear 0.1
+      angular 0.1
+    }
+  }
+  linearVelocity -7.542337022649767e-19 2.56011081633778e-17 -3.328767397804737e-17
+  angularVelocity -9.093408164945348e-16 5.566761865853166e-17 -6.763634666017007e-17
+}
+  }

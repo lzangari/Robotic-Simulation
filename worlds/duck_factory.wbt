@@ -1,0 +1,799 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation -0.9648 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation 0.965 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.32719884963766493 0.8881847505878704 0.3225969026803436 1.6753766772401457
+  position 18.82121663597644 10.68581460837197 2.4212576241595305
+}
+TexturedBackground {
+  texture "factory"
+}
+TexturedBackgroundLight {
+  texture "factory"
+}
+Floor {
+  translation 5 -0.5 2.5
+  rotation 0 1 0 1.5708003061004252
+  tileSize 10 10
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "textures/floor.jpg"
+      ]
+    }
+    roughness 1
+    metalness 0
+  }
+}
+Solid {
+  translation 5 0 -2.5
+  children [
+    Shape {
+      appearance DEF WALL_APP PBRAppearance {
+        baseColor 0.333333 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry DEF WALL Box {
+        size 10 1 0.1
+      }
+    }
+  ]
+  name "wall1"
+  boundingObject USE WALL
+}
+Solid {
+  translation 0 0 2.5
+  rotation 0 1 0 1.5707996938995747
+  children [
+    Shape {
+      appearance USE WALL_APP
+      geometry USE WALL
+    }
+  ]
+  name "wall2"
+  boundingObject USE WALL
+}
+Solid {
+  translation 5 0 7.5
+  rotation 0 1 0 3.141592653589793
+  children [
+    Shape {
+      appearance USE WALL_APP
+      geometry USE WALL
+    }
+  ]
+  name "wall3"
+  boundingObject USE WALL
+}
+Solid {
+  translation 10 0 2.45
+  rotation 0 1 0 4.712389693899574
+  children [
+    Shape {
+      appearance USE WALL_APP
+      geometry USE WALL
+    }
+  ]
+  name "wall4"
+  boundingObject USE WALL
+}
+Solid {
+  translation 4.1 0 1.55
+  rotation 0 1 0 4.712389693899574
+  children [
+    Shape {
+      appearance USE WALL_APP
+      geometry DEF DIVIDER_WALL Box {
+        size 8 1 0.1
+      }
+    }
+  ]
+  name "wall4(1)"
+  boundingObject USE DIVIDER_WALL
+}
+Group {
+  children [
+    RoCKInShelf {
+      translation 7.5 -0.5 -2.3
+      rotation 0 1 0 1.57
+      name "RoCKIn shelf(2)"
+    }
+    RoCKInShelf {
+      translation 8.1 -0.5 -2.3
+      rotation 0 1 0 1.57
+      name "RoCKIn shelf(3)"
+    }
+  ]
+}
+Group {
+  children [
+    RoCKInShelf {
+      translation 7.8 -0.5 7.3
+      rotation 0 1 0 1.57
+      name "RoCKIn shelf(4)"
+    }
+    RoCKInShelf {
+      translation 8.4 -0.5 7.3
+      rotation 0 1 0 1.57
+      name "RoCKIn shelf(5)"
+    }
+  ]
+}
+RoCKInShelf {
+  translation 9.8 -0.5 0
+}
+RoCKInShelf {
+  translation 9.8 -0.5 0.6
+  name "RoCKIn shelf(1)"
+}
+DEF CONV_WALL Solid {
+  translation 4.21 -0.7 4.7
+  rotation 0 1 0 1.57
+  children [
+    Transform {
+      translation 0 0.4 0.13
+      children [
+        DEF CONV_WALL_SHAPE Shape {
+          appearance DEF CONV_WALL_APP PBRAppearance {
+            baseColor 0.333333 0 0
+            roughness 0.215
+            metalness 0
+          }
+          geometry Box {
+            size 5.5 0.45 0.04
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.4 0.47
+      children [
+        USE CONV_WALL_SHAPE
+      ]
+    }
+  ]
+  name "conv_wall"
+  boundingObject Group {
+    children [
+      Transform {
+        translation 0 0.4 0.13
+        children [
+          USE CONV_WALL_SHAPE
+        ]
+      }
+      Transform {
+        translation 0 0.4 0.47
+        children [
+          USE CONV_WALL_SHAPE
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  translation 4.38 -0.1 4
+  rotation 0 1 0 -2.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry DEF RAIL_1 Box {
+        size 0.25 0.05 0.01
+      }
+    }
+  ]
+  name "rail"
+  boundingObject USE RAIL_1
+}
+Solid {
+  translation 4.63 -0.1 4
+  rotation 0 1 0 -0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry DEF RAIL_2 Box {
+        size 0.25 0.05 0.01
+      }
+    }
+  ]
+  name "rail"
+  boundingObject USE RAIL_2
+}
+Table {
+  translation 3.8 -0.5 6.42296
+  name "table(3)"
+  size 0.5 0.4 1.7
+}
+Table {
+  translation 0.797555 -0.5 -0.729582
+  name "tableCenter(1)"
+  size 0.2 0.4 1
+  feetSize 0.2 0.05
+  trayAppearance BakelitePlastic {
+    color "braun"
+  }
+  legAppearance BakelitePlastic {
+  }
+}
+Table {
+  translation 0.783938 -0.5 2.41092
+  name "tableCenter(3)"
+  size 0.2 0.4 1
+  feetSize 0.2 0.05
+  trayAppearance BakelitePlastic {
+    color "braun"
+  }
+  legAppearance BakelitePlastic {
+  }
+}
+Table {
+  translation 0.797366 -0.5 5.36634
+  rotation 0 -1 0 0
+  name "tableCenter(2)"
+  size 0.2 0.4 1
+  feetSize 0.2 0.05
+  trayAppearance BakelitePlastic {
+    color "braun"
+  }
+  legAppearance BakelitePlastic {
+  }
+}
+Pedestrian {
+  translation 5.1 0.77 4
+  rotation 0 1 0 -1.57
+  shirtColor 1 0 0
+  pantsColor 1 0.666667 0
+  shoesColor 0 0 0
+}
+Pedestrian {
+  translation 9.6 0.77 4.1
+  rotation 0 1 0 3.14
+  name "pedestrian(1)"
+}
+CardboardBox {
+  translation 8.9112 -0.3 -2.17029
+  size 0.4 0.4 0.4
+}
+CardboardBox {
+  translation 9.7 0.1 2.4
+  name "cardboard box(1)"
+  size 0.4 0.4 0.4
+}
+CardboardBox {
+  translation 9.7 -0.3 2.4
+  name "cardboard box(2)"
+  size 0.4 0.4 0.4
+}
+CardboardBox {
+  translation 7.1 -0.3 7.2
+  name "cardboard box(3)"
+  size 0.4 0.4 0.4
+}
+RubberDuck {
+  translation 0.3500522229841477 -0.07957553171248216 5.934400763163555
+  rotation -1.0405388940649216e-07 0.9999999999808504 6.187749902886454e-06 3.1400000014667615
+  bodyColor 1 1 0
+  density 600
+}
+RubberDuck {
+  translation 0.350052 -0.0795515 3.4
+  rotation -1.0443958308209333e-07 0.9999999999877837 4.9418220354634035e-06 3.140000001469916
+  name "rubber duck(1)"
+  density 600
+}
+RubberDuck {
+  translation 0.3519616184812698 -0.07953236374366784 -0.05952116868265189
+  rotation -3.1850349959935034e-07 0.9999999999875826 4.973298709974292e-06 -3.0800363379075852
+  name "rubber duck(2)"
+  density 600
+}
+RubberDuck {
+  translation 8.11682 0.05 -2.28807
+  name "decoration(1)"
+}
+RubberDuck {
+  translation 8.3 -0.29 -2.28807
+  name "decoration(2)"
+}
+RubberDuck {
+  translation 7.5 -0.29 -2.28807
+  name "decoration(3)"
+}
+RubberDuck {
+  translation 7.4 -0.46 -2.28807
+  name "decoration(4)"
+}
+RubberDuck {
+  translation 8 -0.46 -2.28807
+  name "decoration(5)"
+}
+RubberDuck {
+  translation 9.8 -0.46 0.5
+  rotation 0 1 0 -1.57
+  name "decoration(6)"
+}
+RubberDuck {
+  translation 9.8 -0.46 -0.1
+  rotation 0 1 0 -1.57
+  name "decoration(7)"
+}
+RubberDuck {
+  translation 9.8 -0.28 -0.2
+  rotation 0 1 0 -1.57
+  name "decoration(8)"
+}
+RubberDuck {
+  translation 9.8 0.05 0.1
+  rotation 0 1 0 -1.57
+  name "decoration(9)"
+}
+RubberDuck {
+  translation 9.8 0.05 0.5
+  rotation 0 1 0 -1.57
+  name "decoration(10)"
+}
+RubberDuck {
+  translation 8.47 0.05 7.31
+  rotation 0 1 0 -3.14
+  name "decoration(11)"
+}
+RubberDuck {
+  translation 8.19 0.05 7.31
+  rotation 0 1 0 -3.14
+  name "decoration(12)"
+}
+RubberDuck {
+  translation 8.19 -0.12 7.31
+  rotation 0 1 0 -3.14
+  name "decoration(13)"
+}
+RubberDuck {
+  translation 8.34 -0.12 7.31
+  rotation 0 1 0 -3.14
+  name "decoration(14)"
+}
+RubberDuck {
+  translation 7.95 -0.29 7.31
+  rotation 0 1 0 -3.14
+  name "decoration(15)"
+}
+RubberDuck {
+  translation 7.95 -0.46 7.31
+  rotation 0 1 0 -3.14
+  name "decoration(16)"
+}
+RubberDuck {
+  translation 7.65 -0.46 7.31
+  rotation 0 1 0 -3.14
+  name "decoration(17)"
+}
+ConveyorBelt {
+  translation 0.4 -0.4 2.5
+  rotation 0 1 0 1.57
+  size 10 0.3 0.5
+  appearance CorrugatedMetal {
+    colorOverride 0 0 0
+    textureTransform TextureTransform {
+      scale 4 2
+    }
+  }
+  speed 0.1
+  timer 20
+  textureAnimation 0.015
+}
+Robot {
+  translation 4.200043494711405 -0.8405032151870184 4.2024976273872445
+  rotation -0.00013817836925764248 0.9999999809271327 0.00013803069310795648 1.5700000986437235
+  children [
+    DistanceSensor {
+      translation 2.22 0.75 0.46
+      rotation 0 -1 0 -1.57
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "object_detector"
+      lookupTable [
+        0 0 0
+        0.25 1000 0
+      ]
+      type "infra-red"
+    }
+    Emitter {
+      translation 2.28 0.55 0.48
+      children [
+        Shape {
+          appearance DEF EM_RC_APP PBRAppearance {
+            baseColor 0.333333 0.333333 0.498039
+            roughness 1
+            metalness 0
+          }
+          geometry DEF EM_RC_GEOM Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      type "infra-red"
+      range 0.5
+      channel 1
+    }
+    Track {
+      translation -0.5 0.695 0.312
+      rotation -1 -1.35996e-07 -8.72946e-07 3.14
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.8 0.8
+            baseColorMap ImageTexture {
+              url [
+                "textures/conveyor_belt.png"
+              ]
+            }
+            roughness 0.5
+            metalness 0
+            textureTransform TextureTransform {
+              scale 10 1
+              translation -0.14670000000000108 0
+            }
+          }
+          geometry DEF Belt_box Box {
+            size 5.5 0.05 0.3
+          }
+        }
+      ]
+      boundingObject USE Belt_box
+      physics Physics {
+        density -1
+        mass 1
+      }
+      device [
+        LinearMotor {
+          name "linear_motor"
+        }
+      ]
+      textureAnimation -0.001 0
+    }
+  ]
+  name "belt"
+  boundingObject Group {
+    children [
+      Transform {
+        translation -100 0.677 0.1
+        rotation 0 1 0 -1.57
+        children [
+          DEF Box_support Box {
+            size 2 0.675 6.4
+          }
+        ]
+      }
+      Transform {
+        translation 100 0.677 0.1
+        rotation 0 1 0 -1.57
+        children [
+          USE Box_support
+        ]
+      }
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 10
+  }
+  controller "conveyor_belt_2"
+  supervisor TRUE
+}
+Youbot {
+  translation 4.51 -0.398062 1.46005
+  rotation 0.577027438973451 0.5770035345183273 0.5780192521232297 -2.093425951319629
+  controller "kuka_controller"
+  bodySlot [
+    Receiver {
+      translation 0.28 0 0
+      children [
+        Shape {
+          appearance USE EM_RC_APP
+          geometry USE EM_RC_GEOM
+        }
+      ]
+      type "infra-red"
+      channel 1
+    }
+    Camera {
+      translation 0.29 0 0
+      rotation 0.47004489143079986 -0.47004489143079986 -0.747071348720867 1.86
+      children [
+        Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "kuka_camera"
+      fieldOfView 0.84
+      width 50
+      height 1
+    }
+  ]
+}
+UR3e {
+  translation 0.804 -0.08 -0.7
+  rotation 3.390498950813652e-09 -0.7071067811865476 -0.7071067811865476 3.14159
+  controller "gripper_controller_1"
+  controllerArgs "0.95 0.95 0.7"
+  selfCollision FALSE
+  toolSlot [
+    Robotiq3fGripper {
+      translation 0 0.04 0
+    }
+    DistanceSensor {
+      translation 0 0.1 0
+      rotation 0 0 1 1.57
+    }
+  ]
+}
+UR3e {
+  translation 0.8042 -0.08 2.35
+  rotation 3.390498950813652e-09 -0.7071067811865476 -0.7071067811865476 3.14159
+  name "UR3e(1)"
+  controller "gripper_controller_1"
+  controllerArgs "0.95 0.95 0.7"
+  selfCollision FALSE
+  toolSlot [
+    Robotiq3fGripper {
+      translation 0 0.04 0
+    }
+    DistanceSensor {
+      translation 0 0.1 0
+      rotation 0 0 1 1.57
+    }
+  ]
+}
+UR3e {
+  translation 0.81 -0.1 5.39
+  rotation 3.390498950813652e-09 -0.7071067811865476 -0.7071067811865476 3.14159
+  controller "gripper_controller_1"
+  controllerArgs "0.95 0.95 0.7"
+  toolSlot [
+    Robotiq3fGripper {
+      translation 0 0.04 0
+    }
+    DistanceSensor {
+      translation 0 0.1 0
+      rotation 0 0 1 1.57
+    }
+  ]
+}
+UR5e {
+  translation 3.7 -0.1 6.5
+  controller "gripper_controller_2"
+  toolSlot [
+    Robotiq3fGripper {
+    }
+    DistanceSensor {
+      translation 0 0.1 0
+      rotation 0 0 1 1.57
+    }
+    DistanceSensor {
+      translation 1.4 -0.22 0.35
+      rotation 0 1 0 1.5708
+      children [
+        Shape {
+          appearance DEF FLOOR_SENSOR_APPEARANCE PBRAppearance {
+            baseColor 0 0 0
+            transparency 1
+            roughness 1
+            metalness 0
+          }
+          geometry DEF FLOOR_SENSOR_GEOMETRY Cylinder {
+            height 0.2
+            radius 0.01
+          }
+        }
+      ]
+      name "floor_sensor_1"
+    }
+  ]
+}
+Pioneer3dx {
+  translation 1.21 -0.403871 -0.53
+  rotation 0.015773823448899923 -0.999757815179003 0.015345927222214926 1.543498018652408
+  controller "pioneer_follow_line_py"
+  extensionSlot [
+    PlasticCrate {
+      translation 0 0.1 0
+      size 0.2 0.1 0.2
+      mass 0.5
+    }
+    TouchSensor {
+      translation -7.475441411441963e-07 0.1799858815256345 -2.1651904100972175e-05
+      rotation 0.9999999999999998 -8.733349570347e-09 1.3921713000632304e-08 -1.5707953124259235
+      children [
+        Shape {
+          appearance DEF FORCE_SENSOR_CRATE_APP PBRAppearance {
+            metalness 0
+          }
+          geometry DEF FORCE_SENSOR_CRATE_GEOM Box {
+            size 0.15 0.15 0.01
+          }
+        }
+      ]
+      name "pressureSensor"
+      boundingObject USE FORCE_SENSOR_CRATE_GEOM
+      physics DEF FORCE_SENSOR_CRATE Physics {
+      }
+      type "force"
+      lookupTable [
+        0 0 0
+        1000 1000 0
+      ]
+    }
+    Camera {
+      translation 0 0 -0.13
+      rotation -1 0 0 0.5240000000000002
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0.498039
+            roughness 1
+            metalness 0
+          }
+          geometry DEF PIONEER_CAMERA Sphere {
+            radius 0.01
+          }
+        }
+      ]
+      name "pioneer_camera"
+      boundingObject USE PIONEER_CAMERA
+      fieldOfView 0.84
+      width 40
+      height 1
+      near 0.1
+    }
+  ]
+}
+Pioneer3dx {
+  translation 1.25 -0.403871 5.52797
+  rotation -0.01534278852261367 0.9997645584152455 -0.015343616820018745 -1.5710436597311748
+  name "Pioneer 3-DX(2)"
+  controller "pioneer_follow_line_py"
+  extensionSlot [
+    PlasticCrate {
+      translation 0 0.1 0
+      size 0.2 0.1 0.2
+      mass 0.5
+    }
+    TouchSensor {
+      translation -1.1081802142598463e-11 0.15995821446030484 1.271437145122789e-06
+      rotation 0.9999999999999999 -2.819401391734861e-09 2.9970023086376915e-09 -1.570795272063459
+      children [
+        Shape {
+          appearance USE FORCE_SENSOR_CRATE_APP
+          geometry USE FORCE_SENSOR_CRATE_GEOM
+        }
+      ]
+      name "pressureSensor"
+      boundingObject USE FORCE_SENSOR_CRATE_GEOM
+      physics USE FORCE_SENSOR_CRATE
+      type "force"
+      lookupTable [
+        0 0 0
+        10 10 0
+      ]
+    }
+    Camera {
+      translation 0 0 -0.13
+      rotation 1 0 0 -0.524
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0.498039
+            roughness 1
+            metalness 0
+          }
+          geometry DEF PIONEER_CAMERA Sphere {
+            radius 0.01
+          }
+        }
+      ]
+      name "pioneer_camera"
+      boundingObject USE PIONEER_CAMERA
+      fieldOfView 0.84
+      width 40
+      height 1
+      near 0.1
+    }
+  ]
+}
+Pioneer3dx {
+  translation 1.28 -0.40387 2.5
+  rotation -0.015345906327517755 0.9997644579467218 -0.015347044845336872 -1.5710639877169776
+  name "Pioneer 3-DX(1)"
+  controller "pioneer_follow_line_py"
+  extensionSlot [
+    PlasticCrate {
+      translation 0 0.1 0
+      size 0.2 0.1 0.2
+      mass 0.5
+    }
+    TouchSensor {
+      translation 1.776486024951396e-08 0.1599530186612657 9.028769425434291e-07
+      rotation 0.9999999999999843 -1.3118381908929368e-07 1.187551595893524e-07 -1.5707954745432677
+      children [
+        Shape {
+          appearance DEF FORCE_SENSOR_CRATE_APP PBRAppearance {
+            metalness 0
+          }
+          geometry DEF FORCE_SENSOR_CRATE_GEOM Box {
+            size 0.15 0.15 0.01
+          }
+        }
+      ]
+      name "pressureSensor"
+      boundingObject USE FORCE_SENSOR_CRATE_GEOM
+      physics DEF FORCE_SENSOR_CRATE Physics {
+      }
+      type "force"
+      lookupTable [
+        0 0 0
+        1000 1000 0
+      ]
+    }
+    Camera {
+      translation 0 0 -0.13
+      rotation 1 0 0 -0.524
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0.498039
+            roughness 1
+            metalness 0
+          }
+          geometry DEF PIONEER_CAMERA Sphere {
+            radius 0.01
+          }
+        }
+      ]
+      name "pioneer_camera"
+      boundingObject USE PIONEER_CAMERA
+      fieldOfView 0.84
+      width 40
+      height 1
+      near 0.1
+    }
+  ]
+}

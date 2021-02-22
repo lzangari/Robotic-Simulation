@@ -1,0 +1,12 @@
+PROTO EPuckLine [
+  field SFVec3f    translation  0 0 0
+]
+{
+  E-puck {
+  translation IS Translation
+  controller "novice_linear_camera"
+  camera_width 40
+  camera_height 1
+  camera_rotation 1 0 0 -0.47
+}
+}

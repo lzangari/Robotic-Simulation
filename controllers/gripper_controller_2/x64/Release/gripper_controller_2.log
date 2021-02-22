@@ -1,0 +1,13 @@
+﻿  gripper_controller_2.c
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\stdbool.h(15): warning C4005: 'bool': macro redefinition
+  c:\program files\webots\include\controller\c\webots\types.h(51): note: see previous definition of 'bool'
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\stdbool.h(16): warning C4005: 'false': macro redefinition
+  c:\program files\webots\include\controller\c\webots\types.h(62): note: see previous definition of 'false'
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\stdbool.h(17): warning C4005: 'true': macro redefinition
+  c:\program files\webots\include\controller\c\webots\types.h(56): note: see previous definition of 'true'
+  Generating code
+  1 of 6 functions (16.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  gripper_controller_2.vcxproj -> C:\Users\Luca Zangari\Documents\my_project\controllers\gripper_controller_2\gripper_controller_2.exe
